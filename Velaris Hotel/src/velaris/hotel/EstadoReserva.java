@@ -10,8 +10,8 @@ package velaris.hotel;
  */
 public enum EstadoReserva {
     
-    CONFIRMADAYPAGADA, 
-    CONFIRMADAYPENDIENTEDEPAGO,
-    NOCONFIRMADA, 
-    PENDIENTE, 
+   CONFIRMADA, 
+   CANCELADA,
+   PENDIENTE
+   
 }
