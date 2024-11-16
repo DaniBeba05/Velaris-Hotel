@@ -1,13 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package clases;
 import Enums.EstadoReserva;
 import clases.Cliente;
 import java.time.LocalDate;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import Enums.TipoPension;
 
 /**
  *
@@ -28,12 +25,13 @@ public class Reserva {
         private boolean pagarAhora;
         private boolean pagado;
         private double costoTotal; 
+        private TipoPension tipoPension; 
 
         //--------------------------------
         //          Constructores:
         //--------------------------------
 
-        public Reserva(LocalDate fechaDeEntrada, LocalDate fechaDeSalida, Cliente cliente, EstadoReserva estadoReserva, boolean pagarAhora, double costoTotal) {
+        public Reserva(LocalDate fechaDeEntrada, LocalDate fechaDeSalida, Cliente cliente, EstadoReserva estadoReserva, boolean pagarAhora, double costoTotal, TipoPension tipoPension) {
             if (fechaDeSalida.isBefore(fechaDeEntrada)) {
                 throw new IllegalArgumentException("La fecha de salida no puede ser anterior a la fecha de entrada.");
             }
@@ -44,6 +42,7 @@ public class Reserva {
             this.pagarAhora = pagarAhora;
             this.pagado = pagarAhora; 
             this.costoTotal = costoTotal; 
+            this.tipoPension = tipoPension;
         }
 
         public Reserva (){
@@ -55,6 +54,7 @@ public class Reserva {
             this.pagarAhora = false; 
             this.pagado = false;
             this.costoTotal = 300; 
+            this.tipoPension = TipoPension.SOLO_DESAYUNO; 
         }
 
         public Reserva(Reserva otraReserva){
@@ -66,7 +66,10 @@ public class Reserva {
             this.pagarAhora = otraReserva.pagarAhora;
             this.pagado = otraReserva.pagado; 
             this.costoTotal = otraReserva.costoTotal;
+            this.tipoPension = otraReserva.tipoPension; 
         }
+
+ 
 
 
 
@@ -108,6 +111,11 @@ public class Reserva {
         public void setCostoTotal(double costoTotal) {
             this.costoTotal = costoTotal;
         }
+        
+        public void setTipoPension (TipoPension tipoPension){
+            
+            this.tipoPension = tipoPension; 
+        }
 
         //--------------------------------
         //          Getters:
@@ -140,14 +148,23 @@ public class Reserva {
         public double getCostoTotal() {
             return costoTotal;
         }
+        
+        public TipoPension getTipoPension() {
+            
+            return tipoPension;
+        }
 
         //--------------------------------
         //          Otros métodos:
         //--------------------------------
 
         public String mostrarDetalles() {
-            return "Reserva de " + cliente.getNombre() + " del " + fechaDeEntrada + " al " + fechaDeSalida +
-                    ". Estado: " + estadoReserva + ". Pagado: " + (pagado ? "Si" : "No");
+             return "Reserva para " + cliente.getNombre() + 
+               " del " + fechaDeEntrada + " al " + fechaDeSalida + 
+               ". Estado: " + estadoReserva + 
+               ". Costo total: " + costoTotal + 
+               ". Tipo de Pension: " + tipoPension +
+               ". Pagada: " + (pagado ? "Sí" : "No");
         }
 
         public void confirmarReserva() {

@@ -1,13 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package clases;
-
-/**
- *
- * @author usuario
- */
 import Enums.TipoStaff;
 import clases.Reserva;
 import java.util.ArrayList;
@@ -30,7 +21,7 @@ public class Staff {
     //          Constructores:
     //--------------------------------
 
-    // Constructor principal
+   
     public Staff(String nombre, int idNumber, TipoStaff tipoStaff, int maxReservas) {
         this.nombre = nombre;
         this.idNumber = idNumber;
@@ -39,7 +30,7 @@ public class Staff {
         this.reservas = new ArrayList<>(); 
     }
     
-    // Constructor sin parámetros
+   
     public Staff() {
         this.nombre = "Jose Mari"; 
         this.idNumber = 3; 
@@ -48,7 +39,7 @@ public class Staff {
         this.reservas = new ArrayList<>(); 
     }
     
-    // Constructor de copia
+   
     public Staff(Staff otroStaff) {
         this.nombre = otroStaff.nombre; 
         this.idNumber = otroStaff.idNumber; 
@@ -194,7 +185,4 @@ public void actualizarInfoBasica(String nuevoNombre, int nuevoIdNumber, TipoStaf
     this.tipoStaff = nuevoTipo;
 }
 
-    
-    
-    
 }
