@@ -26,7 +26,7 @@ public class InitialView extends JPanel {
      */
     public InitialView() {
         
-        imagenDeFondo = new ImageIcon(getClass().getResource("/img/background/Hotel.jpeg")).getImage();
+       
 
         initComponents();
 
